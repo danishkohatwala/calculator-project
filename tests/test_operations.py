@@ -1,5 +1,5 @@
 import pytest
-from calculator.operations import add, subtract, multiply, divide
+from calculator.operations import add, subtract, multiply, divide, power
 
 def test_add_positive_numbers():
     assert add(2, 3) == 5
@@ -62,3 +62,25 @@ def test_divide_by_zero():
 
 def test_divide_decimals():
     assert divide(0.5, 0.2) == 2.5
+
+def test_power_positive_base_positive_exponent():
+    assert power(2, 3) == 8
+
+def test_power_negative_base_even_exponent():
+    assert power(-2, 4) == 16
+
+def test_power_negative_base_odd_exponent():
+    assert power(-2, 3) == -8
+
+def test_power_zero_base():
+    assert power(0, 5) == 0
+
+def test_power_zero_exponent():
+    assert power(5, 0) == 1
+
+def test_power_fractional_exponent():
+    assert power(4, 0.5) == 2
+
+def test_power_negative_base_fractional_exponent():
+    with pytest.raises(ValueError):
+        power(-4, 0.5)

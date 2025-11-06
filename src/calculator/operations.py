@@ -15,3 +15,9 @@ def divide(a: float, b: float) -> float:
     if b == 0:
         raise ZeroDivisionError("division by zero")
     return a / b
+
+def power(a: float, b: float) -> float:
+    """Calculates the power of a number and returns the result."""
+    if a < 0 and b % 1 != 0:
+        raise ValueError("Cannot calculate the power of a negative number with a fractional exponent")
+    return a ** b

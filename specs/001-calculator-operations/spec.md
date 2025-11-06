@@ -77,11 +77,30 @@ As a user, I want to divide two numbers so that I can get their quotient.
 4. **Given** zero and a non-zero number, **When** I divide them, **Then** the result is zero.
 5. **Given** two decimal numbers, **When** I divide them, **Then** the result is their quotient.
 
+---
+
+### User Story 5 - Calculate the power of a number (Priority: P2)
+
+As a user, I want to calculate the power of a number so that I can perform exponentiation.
+
+**Why this priority**: Exponentiation is a common calculator operation.
+
+**Independent Test**: The power operation can be tested independently by calling the `power` function with various inputs and verifying the output.
+
+**Acceptance Scenarios**:
+
+1. **Given** a positive base and a positive exponent, **When** I calculate the power, **Then** the result is correct.
+2. **Given** a negative base and an even exponent, **When** I calculate the power, **Then** the result is correct and positive.
+3. **Given** a negative base and an odd exponent, **When** I calculate the power, **Then** the result is correct and negative.
+4. **Given** any base and a zero exponent, **When** I calculate the power, **Then** the result is 1.
+5. **Given** a zero base and a positive exponent, **When** I calculate the power, **Then** the result is 0.
+
 ### Edge Cases
 
 - **Division by zero**: The system must handle division by zero by raising a `ZeroDivisionError`.
 - **Invalid inputs**: The system must handle non-numeric inputs by raising a `ValueError`.
 - **Floating-point precision**: Tests for floating-point results must use a tolerance (e.g., `math.isclose()`) rather than exact equality.
+- **Power operation with negative base and fractional exponent**: The function MUST raise a `ValueError` in this case, as the library does not support complex numbers.
 
 ## Requirements *(mandatory)*
 
@@ -92,12 +111,13 @@ As a user, I want to divide two numbers so that I can get their quotient.
 - **FR-003**: All functions MUST include Python 3.12+ type hints and have clear docstrings, as per the constitution.
 - **FR-004**: The system MUST raise a `ValueError` for any non-numeric inputs.
 - **FR-005**: The divide operation MUST raise a `ZeroDivisionError` when the divisor is zero.
+- **FR-006**: The calculator library MUST provide a function for exponentiation (`power`).
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
-- **SC-001**: All calculator operations (add, subtract, multiply, divide) have 100% test coverage.
+- **SC-001**: All calculator operations (add, subtract, multiply, divide, power) have 100% test coverage.
 - **SC-002**: The entire codebase passes `mypy` type checking with no errors.
 - **SC-003**: All code adheres to the rules and principles outlined in the project's constitution.
 - **SC-004**: All tests for floating-point arithmetic must pass using a tolerance-based comparison (e.g., `math.isclose()`).
